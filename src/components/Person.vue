@@ -1,7 +1,7 @@
 <template>
     <tr>
         <td class="name">
-            <div class="initials-box" v-bind:style="{ backgroundColor: backgroundColor }">{{ initials }}</div>
+            <div class="initials-box" v-bind:style="{ backgroundColor: initialsBgColor }">{{ initials }}</div>
             {{ name }}
         </td>
         <td class="title">{{ title }}</td>
@@ -11,14 +11,11 @@
 </template>
 
 <script>
-import _ from 'lodash'
-
 export default {
     name: 'person',
-    props: ['name', 'title', 'organization', 'location'],
+    props: ['name', 'title', 'organization', 'location', 'initialsBgColor'],
     data() {
         return {
-            backgroundColor: _.sample(['green', 'red', 'blue'])
         }
     },
     computed: {

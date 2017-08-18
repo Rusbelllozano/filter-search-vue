@@ -8,8 +8,9 @@
                 People
             </thead>
             <tbody>
-                <Person v-for="person in people"
+                <Person v-for="(person, index) in people"
                         key="person.id"
+                        :initialsBgColor="initialsBgColors[index % 3]"
                         :name="person.name"
                         :title="person.title"
                         :organization="person.organization"
@@ -22,8 +23,9 @@
                 Organizations
             </thead>
             <tbody>
-                <Organization v-for="org in organizations"
+                <Organization v-for="(org, index) in organizations"
                         key="org.id"
+                        :initialsBgColor="initialsBgColors[index % 3]"
                         :name="org.name"
                         :location="org.location"
                 />
@@ -33,6 +35,8 @@
 </template>
 
 <script>
+import _ from 'lodash'
+
 import Person from './Person'
 import Organization from './Organization'
 import data from '../../data.json'
@@ -45,13 +49,14 @@ export default {
     },
     data() {
         return {
+            initialsBgColors: ['green', 'red', 'blue'],
             searchText: '',
             people: {},
             organizations: {},
-            personCollection: this.retrieveJSON().map((obj) => {
+            personCollection: _.uniqBy(this.retrieveJSON(), 'person_id').map((obj) => {
                 return this.toPerson(obj)
             }),
-            organizationCollection: this.retrieveJSON().map((obj) => {
+            organizationCollection: _.uniqBy(this.retrieveJSON(), 'organization_id').map((obj) => {
                 return this.toOrganization(obj)
             }),
             filterFields: {
