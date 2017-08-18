@@ -1,5 +1,8 @@
 # filter-search-vue
 
+I streamed this live on my youtube channel.  
+See [part 1](https://www.youtube.com/watch?v=bvy-G0Efn24) and [part 2](https://www.youtube.com/watch?v=WELqRT2Hjac)
+
 > filter search
 
 ## Build Setup
